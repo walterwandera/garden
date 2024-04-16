@@ -1,0 +1,70 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>single item</title>
+
+    <!-- CSS supporting files -->
+    <link rel="stylesheet" href="../static/files/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="../static/files/css/lightslider.css" />
+
+    <link rel="stylesheet" href="../static/files/css/style.css" />
+
+    <!-- JS supporting files -->
+    <script src="../static/files/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../static/files/js/jquery.js"></script>
+
+    <script src="../static/files/js/lightslider.js"></script>
+
+    <script src="../static/files/js/script.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      {% include 'navbar.html' %}
+      <br />
+      <section class="row">
+        <!-- col-md-4 start -->
+        <div class="col-md-4">
+          <img
+            src="../static/images/{{product[5]}}"
+            alt="product[5]"
+            class="img-thumbnail p-4"
+          />
+        </div>
+        <!-- col-md-4 end -->
+
+        <!-- col-md-8 start -->
+        <div class="col-md-8">
+          <h6>{{ product[1] }}</h6>
+          <b class="text-muted">KES {{ product[3] }}</b>
+          <p class="" style="font-size: 15px">
+            {{ product[2] }}
+            <br />
+            <br />
+            <!-- form start -->
+            {% if session['username'] %}
+            <form action="/mpesa" method="post" class="bg-white" style="padding: 45px;">
+            <label for="phone">Phone number</label>
+            <input type="text" name="phone" id="phone" class="form-control" placeholder="254x xxx xxx">
+            <br>
+
+            <label for="ammount">Ammount</label>
+            <input type="number" name="ammount" id="ammount" class="form-control" value="{{product[3]}}"readonly>
+            <br>
+
+            <input type="submit" value="Buy now" class="btn btn-success">
+            </form>
+          {%  else %}
+            <!-- form end -->
+            <a href="/login" class="btn btn-warning">Login to purchase</a>
+            {% endif %}
+
+          </p>
+        </div>
+        <!-- col-md-8 end -->
+      </section>
+    </div>
+  </body>
+</html>

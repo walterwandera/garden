@@ -1,0 +1,43 @@
+<section class="row">
+    <div class="col-md-12">
+      <nav class="navbar navbar-expand-md navbar-light btn-light p-3">
+        <a href="#" 
+        class="navbar-brand">
+        Soko 
+        <b class="text-success">Garden</b>
+    </a>
+        <button 
+        type="button" 
+        class="navbar-toggler" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div 
+        class="collapse navbar-collapse" 
+        id="navbarCollapse">
+          <div class="navbar-nav">
+            <a href="/" class="nav-item nav-link">Home</a>
+            <a href="/" class="nav-item nav-link">Electronics</a>
+            <a href="/" class="nav-item nav-link">Groceries</a>
+            <a href="/" class="nav-item nav-link">About</a>
+            <a href="/upload" class="btn btn-success">Sell</a>   
+
+            <a href="/vendor" class="btn btn-success " style="margin-left: 10px;">Register vendor</a>
+          </div>
+          <div class="navbar-nav ms-auto">
+            <!--    TODO Logout-->
+            {%  if session['username'] %}
+            <b class=" nav-item nav-link">Hello {{ session['username'] }}</b>
+            <a href="/logout" class="nav-item nav-link">Logout</a>
+            {%  else %}
+            <a href="/register" class="nav-item nav-link">Register</a>
+            <a href="/login" class="nav-item nav-link">Login</a>
+            {%  endif %}
+
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
